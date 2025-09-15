@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Piyush Pandey • Python Developer & Creator</title>
+  <meta name="description"
+    content="Portfolio of Piyush Pandey – Python Developer, Educator, and Creator specializing in automation testing, AI tools, and web scraping." />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..800&family=Poppins:wght@400;600;700&display=swap"
+    rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0b1220;
+      /* deep navy/charcoal */
+      --card: #111a2e;
+      /* darker card */
+      --muted: #93a8c3;
+      /* subtle text */
+      --text: #e7eefc;
+      /* main text */
+      --blue: #00b4ff;
+      /* electric blue */
+      --emerald: #10b981;
+      /* emerald green */
+      --ring: rgba(0, 180, 255, .25);
+      --shadow: 0 10px 30px rgba(0, 0, 0, .35);
+      --radius: 18px;
+      --maxw: 1200px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      background: radial-gradient(1200px 600px at 70% -10%, rgba(0, 180, 255, .12), transparent 50%),
+        radial-gradient(1000px 500px at -10% 20%, rgba(16, 185, 129, .12), transparent 50%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* Global layout helpers */
+    .container {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    section {
+      padding: 80px 0;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: Poppins, Inter, sans-serif;
+      margin: 0 0 16px;
+    }
+
+    p {
+      color: var(--muted);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* Navbar */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(10px);
+      background: linear-gradient(180deg, rgba(11, 18, 32, .85), rgba(11, 18, 32, .55));
+      border-bottom: 1px solid rgba(255, 255, 255, .06);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      height: 64px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      letter-spacing: .3px;
+    }
+
+    .brand-badge {
+      width: 32px;
+      height: 32px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--blue), var(--emerald));
+      box-shadow: inset 0 0 20px rgba(255, 255, 255, .25);
+    }
+
+    .nav a {
+      color: var(--text);
+      opacity: .9;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+    }
+
+    .nav-links a {
+      padding: 8px 12px;
+      border-radius: 10px;
+      transition: transform .15s ease, background .2s ease, opacity .2s;
+    }
+
+    .nav-links a:hover {
+      background: rgba(255, 255, 255, .06);
+      transform: translateY(-1px);
+      opacity: 1;
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      padding: 120px 0 100px;
+      overflow: hidden;
+    }
+
+    .grid-bg {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: .18;
+      background-image: linear-gradient(rgba(255, 255, 255, .08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, .08) 1px, transparent 1px);
+      background-size: 40px 40px, 40px 40px;
+      background-position: 0 0, 0 0;
+      mask-image: radial-gradient(60% 60% at 50% 40%, black, transparent 80%);
+    }
+
+    /* flowing code/data waves */
+    .hero-waves {
+      position: absolute;
+      inset: -10% -30% auto -30%;
+      height: 60%;
+      pointer-events: none;
+      background: conic-gradient(from 180deg, rgba(0, 180, 255, .25), rgba(16, 185, 129, .25), rgba(0, 180, 255, .25));
+      filter: blur(60px) saturate(120%);
+      animation: swirl 18s linear infinite;
+    }
+
+    @keyframes swirl {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border: 1px solid rgba(255, 255, 255, .08);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .03);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(6px);
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .tag-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue), var(--emerald));
+      box-shadow: 0 0 12px var(--blue);
+    }
+
+    .hero h1 {
+      font-size: clamp(36px, 5vw, 56px);
+      line-height: 1.1;
+      margin-top: 14px;
+    }
+
+    .lead {
+      font-size: clamp(16px, 2.2vw, 18px);
+      max-width: 60ch;
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 12px;
+      margin-top: 28px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 12px 16px;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, .1);
+      background: rgba(255, 255, 255, .04);
+      color: var(--text);
+      cursor: pointer;
+      transition: transform .15s ease, box-shadow .2s ease, background .2s;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, .35);
+      background: rgba(255, 255, 255, .06);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--blue), var(--emerald));
+      border: none;
+      color: #04101e;
+      font-weight: 700;
+    }
+
+    .btn-primary:hover {
+      filter: brightness(1.08);
+    }
+
+    .portrait-card {
+      position: relative;
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(255, 255, 255, .06), rgba(255, 255, 255, .02));
+      border: 1px solid rgba(255, 255, 255, .08);
+      padding: 14px;
+      box-shadow: var(--shadow);
+    }
+
+    .portrait {
+      aspect-ratio: 4/5;
+      width: 100%;
+      border-radius: calc(var(--radius) - 8px);
+
+      /* Gradient + image stacked */
+      background:
+        /* linear-gradient(135deg, #1b2946, #0e1729), */
+        url("assests/dp.jpg");
+
+      background-size: cover;
+      /* image covers container */
+      background-position: center;
+      /* image stays centered */
+      background-repeat: no-repeat;
+      /* prevent tiling */
+
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .portrait::before {
+      content: "";
+      position: absolute;
+      inset: -40% -20%;
+      background: radial-gradient(closest-side, rgba(0, 180, 255, .28), transparent 70%);
+      animation: float 8s ease-in-out infinite alternate;
+      filter: blur(30px);
+    }
+
+    @keyframes float {
+      to {
+        transform: translateY(-16px) translateX(10px) scale(1.02);
+      }
+    }
+
+    /* .portrait-initials {
+      font-size: 64px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      background: linear-gradient(135deg, var(--blue), var(--emerald));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    } */
+
+    /* Section headers */
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 26px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(24px, 3.2vw, 34px);
+    }
+
+    .muted {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* About */
+    .about {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 28px;
+    }
+
+    .about-card {
+      background: var(--card);
+      border: 1px solid rgba(255, 255, 255, .06);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .kpis {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 16px;
+    }
+
+    .kpi {
+      background: rgba(255, 255, 255, .03);
+      border: 1px solid rgba(255, 255, 255, .06);
+      border-radius: 14px;
+      padding: 14px;
+      text-align: center;
+    }
+
+    .kpi strong {
+      display: block;
+      font-size: 20px;
+    }
+
+    /* Projects */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid rgba(255, 255, 255, .06);
+      border-radius: var(--radius);
+      overflow: hidden;
+      position: relative;
+      box-shadow: var(--shadow);
+      transition: transform .18s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 36px rgba(0, 0, 0, .45);
+      border-color: rgba(0, 180, 255, .3);
+    }
+
+    .card-media1 {
+      width: 100%;
+      aspect-ratio: 4/3;
+      /* smaller aspect ratio, adjust as needed */
+      display: grid;
+      place-items: center;
+
+      /* Background image properties */
+      background-image: url('assests/ml_project.png');
+      /* replace with your image */
+      background-position: center;
+      /* center the image */
+      background-repeat: no-repeat;
+      /* prevent tiling */
+      background-size: contain;
+      aspect-ratio: 16/9;
+
+      display: grid;
+      place-items: center;
+    }
+
+    .card-media2 {
+      width: 100%;
+      aspect-ratio: 4/3;
+      /* smaller aspect ratio, adjust as needed */
+      display: grid;
+      place-items: center;
+
+      /* Background image properties */
+      background-image: url('assests/file_organizer.png');
+      /* replace with your image */
+      background-position: center;
+      /* center the image */
+      background-repeat: no-repeat;
+      /* prevent tiling */
+      background-size: contain;
+      aspect-ratio: 16/9;
+
+      display: grid;
+      place-items: center;
+    }
+
+    .card-media3 {
+      width: 100%;
+      aspect-ratio: 4/3;
+      /* smaller aspect ratio, adjust as needed */
+      display: grid;
+      place-items: center;
+
+      /* Background image properties */
+      background-image: url('assests/attendance.png');
+      /* replace with your image */
+      background-position: center;
+      /* center the image */
+      background-repeat: no-repeat;
+      /* prevent tiling */
+      background-size: contain;
+      aspect-ratio: 16/9;
+
+      display: grid;
+      place-items: center;
+    }
+
+    .chip {
+      display: inline-block;
+      font-size: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, .12);
+      background: rgba(255, 255, 255, .04);
+      margin-right: 8px;
+    }
+
+    .card-body {
+      padding: 16px;
+    }
+
+    /* Skills */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 14px;
+    }
+
+    .skill {
+      display: grid;
+      place-items: center;
+      gap: 8px;
+      padding: 18px;
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, .06);
+      background: rgba(255, 255, 255, .03);
+      transition: transform .15s ease, background .2s ease;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .skill:hover {
+      transform: translateY(-3px);
+      background: rgba(255, 255, 255, .06);
+    }
+
+    .skill svg {
+      width: 28px;
+      height: 28px;
+    }
+
+    /* YouTube Carousel */
+    .carousel {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius);
+      border: 1px solid rgba(255, 255, 255, .08);
+      background: var(--card);
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform .5s ease;
+    }
+
+    .slide {
+      min-width: 100%;
+      padding: 12px;
+    }
+
+    .yt-thumb1 {
+      width: 100%;
+      aspect-ratio: 4/3;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      display: grid;
+      place-items: center;
+
+      /* Background properties */
+      background-image: url('assests/data_struc.png');
+      /* Replace with your image path */
+      background-position: center;
+      /* Center the image */
+      background-repeat: no-repeat;
+      /* Prevent tiling */
+      background-size: cover;
+    }
+
+    .yt-thumb2 {
+      width: 100%;
+      aspect-ratio: 4/3;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      display: grid;
+      place-items: center;
+
+      /* Background properties */
+      background-image: url('assests/data_science.png');
+      /* Replace with your image path */
+      background-position: center;
+      /* Center the image */
+      background-repeat: no-repeat;
+      /* Prevent tiling */
+      background-size: cover;
+    }
+
+    .yt-thumb3 {
+      width: 100%;
+      aspect-ratio: 4/3;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      display: grid;
+      place-items: center;
+
+      /* Background properties */
+      background-image: url('assests/interview.png');
+      /* Replace with your image path */
+      background-position: center;
+      /* Center the image */
+      background-repeat: no-repeat;
+      /* Prevent tiling */
+      background-size: cover;
+    }
+
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      border: none;
+      background: rgba(0, 0, 0, .35);
+      color: white;
+      padding: 10px 12px;
+      cursor: pointer;
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+    }
+
+    .carousel-btn:hover {
+      background: rgba(0, 0, 0, .55);
+    }
+
+    .prev {
+      left: 12px;
+    }
+
+    .next {
+      right: 12px;
+    }
+
+    /* Contact */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 24px;
+    }
+
+    .form {
+      background: var(--card);
+      border: 1px solid rgba(255, 255, 255, .08);
+      border-radius: var(--radius);
+      padding: 20px;
+    }
+
+    .field {
+      display: grid;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .input,
+    .textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, .12);
+      background: rgba(255, 255, 255, .03);
+      color: var(--text);
+      outline: none;
+      transition: box-shadow .2s ease, border-color .2s ease, background .2s ease;
+      font: inherit;
+    }
+
+    .input:focus,
+    .textarea:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 6px var(--ring);
+      background: rgba(255, 255, 255, .05);
+    }
+
+    .textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .socials {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .socials a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, .1);
+      background: rgba(255, 255, 255, .03);
+    }
+
+    .socials a:hover {
+      background: rgba(255, 255, 255, .06);
+    }
+
+    /* Footer */
+    footer {
+      padding: 40px 0 50px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+
+      .hero-inner,
+      .about,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .skills-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- NAVBAR -->
+  <nav class="nav">
+    <div class="container nav-inner">
+      <div class="brand">
+        <div class="brand-badge" aria-hidden="true"></div>
+        <a href="#top" aria-label="Piyush Pandey home"><span>Piyush Pandey</span></a>
+      </div>
+      <div class="nav-links">
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#content">Content</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header id="top" class="hero">
+    <div class="grid-bg"></div>
+    <div class="hero-waves" aria-hidden="true"></div>
+    <div class="container hero-inner">
+      <div>
+        <div class="tag"><span class="tag-dot"></span> Python Developer • Educator • Creator</div>
+        <h1>Building Smarter Solutions with <span
+            style="background:linear-gradient(135deg,var(--blue),var(--emerald));-webkit-background-clip:text;background-clip:text;color:transparent">Code</span>
+        </h1>
+        <p class="lead">I'm <strong>Piyush Pandey</strong>, specializing in <strong>automation testing</strong>,
+          <strong>AI tools</strong>, and <strong>web scraping</strong>. I build clean, reliable systems and teach modern
+          Python practices through tutorials and live sessions.
+        </p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#projects">View Projects</a>
+          <a class="btn" href="#content">Watch Tutorials</a>
+          <a class="btn" href="#contact">Get in Touch</a>
+        </div>
+      </div>
+      <div class="portrait-card" aria-hidden="true">
+        <div class="portrait">
+          <div class="portrait-initials"></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="section-head">
+        <h2>About</h2>
+        <span class="muted">Python • Automation • AI • Web Scraping</span>
+      </div>
+      <div class="about">
+        <div class="about-card">
+          <h3>Hello! I'm Piyush 👋</h3>
+          <p>Python developer with 4+ years of experience, educator, and content creator. I design practical
+            automations, test frameworks, and scraping pipelines—always striving for clarity, performance, and
+            maintainability.</p>
+          <div class="kpis">
+            <div class="kpi"><strong>4+ yrs</strong><span class="muted">Python</span></div>
+            <div class="kpi"><strong>Automation</strong><span class="muted">Selenium · PyTest</span></div>
+            <div class="kpi"><strong>AI & LLMs</strong><span class="muted">Bots · Prompts</span></div>
+          </div>
+        </div>
+        <div class="about-card">
+          <h3>Core Skills</h3>
+          <p><strong>Python</strong>, <strong>C</strong>, <strong>Selenium</strong>, <strong>BeautifulSoup</strong>,
+            <strong>Requests</strong>, <strong>SQLite</strong>, <strong>AI/Agent tools</strong>, <strong>REST
+              APIs</strong>, <strong>CI-ready testing</strong>.
+          </p>
+          <p>Comfortable with designing data models, crafting resilient scrapers, and building test suites that scale.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="container">
+      <div class="section-head">
+        <h2>Projects</h2>
+        <span class="muted">Selected hands-on work</span>
+      </div>
+      <div class="projects-grid">
+        <!-- Project 1 -->
+        <article class="card">
+          <div class="card-media1" aria-hidden="true"><span class="chip"></span></div>
+          <div class="card-body">
+            <h3>ML Medical Analysis - Patient Care</h3>
+            <p class="muted">Based on a dataset, this project identifies whether a patient requires home treatment or
+              hospital treatment, helping in early diagnosis and care planning.</p>
+            <div class="muted">Python · Pandas · Scikit-learn · Machine Learning</div>
+          </div>
+        </article>
+        <!-- Project 2 -->
+        <article class="card">
+          <div class="card-media2" aria-hidden="true"><span class="chip"></span></div>
+          <div class="card-body">
+            <h3>File Organizer</h3>
+            <p class="muted">Automatically sorts files into folders (images, docs, PDFs, videos) based on file
+              extensions for easy management and organization.</p>
+            <div class="muted">Python · os · shutil</div>
+          </div>
+        </article>
+        <!-- Project 3 -->
+        <article class="card">
+          <div class="card-media3" aria-hidden="true"><span class="chip"></span></div>
+          <div class="card-body">
+            <h3>Attendance Management System</h3>
+            <p class="muted">Uses Python and OpenCV with haarcascade_frontalface_alt.xml for face recognition. Tracks
+              attendance for different subjects and stores records in .txt and .xlsx files.</p>
+            <div class="muted">Python · OpenCV · File Handling · Excel</div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="container">
+      <div class="section-head">
+        <h2>Skills</h2>
+        <!-- <span class="muted">Icon-based tech stack</span> -->
+      </div>
+      <div class="skills-grid">
+        <div class="skill" title="Python">
+          <!-- Python icon -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M9 3h6a3 3 0 0 1 3 3v4H9a3 3 0 0 0-3 3v3H6a3 3 0 0 1-3-3V9a6 6 0 0 1 6-6Z" />
+            <path d="M15 21H9a3 3 0 0 1-3-3v-4h9a3 3 0 0 0 3-3V8h.01A6 6 0 0 1 21 14v1a6 6 0 0 1-6 6Z" />
+          </svg>
+          Python
+        </div>
+        <div class="skill" title="Selenium">
+          <!-- Selenium icon (check mark box) -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="4" />
+            <path d="m7 12 3 3 7-7" />
+          </svg>
+          Selenium
+        </div>
+        <div class="skill" title="BeautifulSoup">
+          <!-- Leaf icon -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M12 3c5 3 8 7 8 11 0 4-3 7-8 7S4 18 4 14c0-4 3-8 8-11Z" />
+            <path d="M12 3v18" />
+          </svg>
+          BeautifulSoup
+        </div>
+        <div class="skill" title="ML">
+          <!-- Placeholder ML icon -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M12 2v20M2 12h20" />
+          </svg>
+          ML
+        </div>
+        <div class="skill" title="Automation">
+          <!-- Placeholder Automation icon -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <circle cx="12" cy="12" r="9" />
+            <path d="M12 6v6l4 2" />
+          </svg>
+          Automation
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- CONTENT CREATOR HIGHLIGHT / CAROUSEL -->
+  <section id="content">
+    <div class="container">
+      <div class="section-head">
+        <h2>Content Creator Highlight</h2>
+        <span class="muted">YouTube tutorials & data science series</span>
+      </div>
+      <div class="carousel" aria-label="YouTube carousel">
+        <div class="carousel-track" id="track">
+          <div class="slide">
+            <a class="yt-thumb1"
+              href="https://youtube.com/playlist?list=PLeLGx0BaYD6bd6TpQq5H02WR1AW8HjGZ6&si=KtUtKBG6dUT869gp"
+              aria-label="Python Data Structures – Dictionaries" target="_blank"><span></span></a>
+          </div>
+          <div class="slide">
+            <a class="yt-thumb2"
+              href="https://youtube.com/playlist?list=PLeLGx0BaYD6Zd9Qf1X9krWicadNNSiBhy&si=yuyBDDspbqT5f_Po"
+              aria-label="Automation Testing with Selenium – Page Objects" target="_blank"><span></span></a>
+          </div>
+          <div class="slide">
+            <a class="yt-thumb3"
+              href="https://youtube.com/playlist?list=PLeLGx0BaYD6b4CYquHSHFL-bmqjNyUb5s&si=__i1Xt_yD_7eQDY5"
+              aria-label="Interview Questions on
+                Python" target="_blank"><span></span></a>
+          </div>
+        </div>
+        <button class="carousel-btn prev" aria-label="Previous" onclick="move(-1)">◀</button>
+        <button class="carousel-btn next" aria-label="Next" onclick="move(1)">▶</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-head">
+        <h2>Contact</h2>
+        <span class="muted">Let's build something great</span>
+      </div>
+      <div class="contact-grid">
+        <form id="contact-form">
+          <div class="field">
+            <label for="name">Name</label>
+            <input id="name" name="name" class="input" type="text" placeholder="Your name" required />
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" class="input" type="email" placeholder="you@example.com" required />
+          </div>
+          <div class="field">
+            <label for="msg">Message</label>
+            <textarea id="msg" name="message" class="textarea" placeholder="Tell me about your project…"
+              required></textarea>
+          </div>
+          <button class="btn btn-primary" type="submit">Send Message</button>
+        </form>
+
+
+        <!-- EmailJS SDK -->
+        <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+        <script>
+          (function () {
+            emailjs.init("fFG5CKPs1Uw3NxHfD"); // Replace with your EmailJS Public Key
+          })();
+
+          document.getElementById("contact-form").addEventListener("submit", function (e) {
+            e.preventDefault(); // prevent form refresh
+
+            emailjs.sendForm("service_a2zn85s", "template_05pslsz", this)
+              .then(() => {
+                alert("✅ Message sent successfully!");
+                this.reset(); // optional: clear the form
+              }, (err) => {
+                alert("❌ Failed to send message: " + JSON.stringify(err));
+              });
+          });
+        </script>
+
+
+        <div class="about-card">
+          <h3>Find me online</h3>
+          <p class="muted">Prefer DMs? Reach out on any of these platforms.</p>
+          <div class="socials">
+            <a href="https://github.com/piyushpandey451" aria-label="GitHub" target="_blank">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path
+                  d="M12 .5a12 12 0 0 0-3.79 23.4c.6.11.82-.26.82-.58v-2.04c-3.34.73-4.04-1.61-4.04-1.61-.55-1.41-1.34-1.8-1.34-1.8-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.23 1.84 1.23 1.07 1.83 2.8 1.3 3.49.99.11-.77.42-1.3.76-1.6-2.66-.3-5.46-1.33-5.46-5.91 0-1.31.47-2.38 1.23-3.22-.12-.3-.53-1.53.12-3.18 0 0 1-.32 3.29 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.29-1.23 3.29-1.23.65 1.65.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.59-2.8 5.6-5.47 5.9.43.37.81 1.1.81 2.22v3.29c0 .32.21.7.82.58A12 12 0 0 0 12 .5Z" />
+              </svg>
+              GitHub
+            </a>
+            <a href="https://www.linkedin.com/in/piyushkumar451/" aria-label="LinkedIn" target="_blank">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path
+                  d="M4.98 3.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5ZM3 8.98h3.96V21H3V8.98Zm6.42 0H13.2v1.65h.05c.58-1.1 2-2.25 4.12-2.25 4.4 0 5.22 2.9 5.22 6.67V21h-3.96v-5.33c0-1.27-.02-2.9-1.77-2.9-1.78 0-2.05 1.38-2.05 2.8V21H9.42V8.98Z" />
+              </svg>
+              LinkedIn
+            </a>
+            <a href="https://www.youtube.com/c/PythonCoding" aria-label="YouTube" target="_blank">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path
+                  d="M23.5 7.5s-.23-1.64-.95-2.35c-.91-.95-1.93-.96-2.4-1.01C16.58 3.75 12 3.75 12 3.75h0s-4.58 0-8.15.39c-.47.05-1.5.06-2.4 1.01C.73 5.86.5 7.5.5 7.5S.28 9.45.28 11.4v1.19c0 1.95.22 3.9.22 3.9s.23 1.64.95 2.35c.91.95 2.1.92 2.64 1.03 1.92.19 8 .38 8 .38s4.59-.01 8.16-.39c.47-.05 1.5-.06 2.4-1.01.72-.71.95-2.35.95-2.35s.22-1.95.22-3.9v-1.2c0-1.95-.22-3.9-.22-3.9ZM9.75 13.8V8.98l5.21 2.42-5.21 2.4Z" />
+              </svg>
+              YouTube
+            </a>
+            <a href="https://x.com/clcoding" aria-label="Twitter/X" target="_blank">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path
+                  d="M18.9 2H22l-7.1 8.1L23.5 22h-6.9l-5.4-7.1L5.2 22H2.1l7.6-8.7L.8 2h7l4.9 6.5L18.9 2Zm-1.2 18h1.9L8.4 4H6.4l11.3 16Z" />
+              </svg>
+              Twitter
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>© <span id="year"></span> Piyush Kumar • Crafted with Pythonic precision.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Simple carousel logic
+    let index = 0;
+    const track = document.getElementById('track');
+    const slides = document.querySelectorAll('.slide');
+
+    function updateCarousel() {
+      track.style.transform = `translateX(-${index * 100}%)`;
+    }
+    function move(dir) {
+      index = (index + dir + slides.length) % slides.length;
+      updateCarousel();
+    }
+
+    // Auto-play carousel every 5s
+    setInterval(() => move(1), 5000);
+  </script>
+</body>
+
+</html>
